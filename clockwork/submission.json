@@ -22,9 +22,51 @@
     [{"position": 180, "bitstring": "101", "input": 1}]
   ]
     },
-    "solve3.json": {},
-    "solve4.json": {},
-    "solve5.json": {},
+    "solve3.json": {
+        {
+  "bitwidth": 5,
+  "operations": ["ifzhalt", "take", "copy", "give", "send"],
+  "rings": [
+    [
+      {"position": 70, "bitstring": "00001"}
+    ],
+    [
+      {"position": 0, "bitstring": "00001"}
+    ],
+    [
+      {"position": 10, "bitstring": "11000", "input": 0},
+      {"position": 30, "bitstring": "00100", "input": 1},
+      {"position": 40, "bitstring": "00010"},
+      {"position": 60, "bitstring": "00001"}
+    ],
+    [
+      {"position": 0, "bitstring": "11010"},
+      {"position": 10, "bitstring": "00101"}
+    ]
+  ]
+}
+    },
+    "solve4.json": {
+  "bitwidth": 4,
+  "operations": ["ifzhalt", "take", "take", "gen"],
+  "rings": [
+    [{"position": 0, "bitstring": "0001"}],
+    [{"position": 310, "bitstring": "0001"}],
+    [
+      {"position": 0, "bitstring": "1100", "input": 0},
+      {"position": 100, "bitstring": "1010", "input": 1}
+    ],
+    [
+      {"position": 350, "bitstring": "1000"},
+      {"position": 80, "bitstring": "1000"},
+      {"position": 330, "bitstring": "0100"},
+      {"position": 60, "bitstring": "0010"}
+    ]
+  ]
+},
+    "solve5.json": {
+        
+    },
     "solve6.json": {},
     "solve7.json": {},
     "solve8.json": {},
