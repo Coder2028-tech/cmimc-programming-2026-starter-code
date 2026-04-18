@@ -1,6 +1,45 @@
 from typing import Any, Tuple
 import random
 
+def SubmissionBot(step, total_steps, pos, last_pos, neighbors, has_slot, slot_coins, data) -> Tuple[int, Any]:
+    if data is None:
+        data = {
+            "hist": [],          # recent positions (anti-loop)
+            "best": None,        # best slot node
+            "best_val": 0        # best value seen
+        }
+
+    if has_slot and slot_coins > 0:
+        if slot_coins > data["best_val"]:
+            data["best_val"] = slot_coins
+            data["best"] = pos
+        return (-1, data)
+
+    if has_slot and slot_coins > data["best_val"]:
+        data["best_val"] = slot_coins
+        data["best"] = pos
+
+    data["hist"].append(pos)
+    if len(data["hist"]) > 8:
+        data["hist"].pop(0)
+
+    choices = [n for n in neighbors if n != last_pos and n not in data["hist"]]
+    if not choices:
+        choices = [n for n in neighbors if n != last_pos] or neighbors
+
+    if data["best"] in neighbors:
+        return (data["best"], data)
+
+    explore_phase = step < total_steps * 0.5
+
+    if explore_phase:
+        return (random.choice(choices), data)
+
+    if data["best"] is not None:
+        return (random.choice(choices), data)
+
+    return (random.choice(choices), data)
+
 TOP_K = 3  # number of best slots to track
 
 def SubmissionGhost(step, total_steps, pos, last_pos, neighbors, has_slot, slot_coins, data) -> Tuple[int, Any]:
