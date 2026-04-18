@@ -1,6 +1,21 @@
 {
-    "solve1.json": {},
-    "solve2.json": {},
+    "solve1.json": { 
+        "bitwidth": 2,
+        "operations": ["send", "ifzhalt"],
+        "rings": [
+            [{"position": 100, "bitstring": "10"}],
+            [{"position": 200, "bitstring": "11"}],
+            [{"position": 200, "bitstring": "11"}],
+            [{"position": 359, "bitstring": "10"}],
+            [
+              {"position": 60, "bitstring": "10", "input": 0},
+              {"position": 120, "bitstring": "10", "input": 1}
+            ]
+        ]
+    },
+    "solve2.json": {
+        
+    },
     "solve3.json": {},
     "solve4.json": {},
     "solve5.json": {},
