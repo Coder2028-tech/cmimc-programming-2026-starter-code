@@ -14,7 +14,13 @@
         ]
     },
     "solve2.json": {
-        
+        "bitwidth": 3,
+  "operations": ["give", "drop", "ifzhalt"],
+  "rings": [
+    [{"position": 0, "bitstring": "010", "input": 0}],
+    [{"position": 359, "bitstring": "111"}],
+    [{"position": 180, "bitstring": "101", "input": 1}]
+  ]
     },
     "solve3.json": {},
     "solve4.json": {},
