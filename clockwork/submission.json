@@ -65,7 +65,35 @@
   ]
 },
     "solve5.json": {
-        
+  "bitwidth": 5,
+  "operations": ["copy", "take", "ifzflip", "send", "ifzhalt"],
+  "rings": [
+    [
+      {"position": 10, "bitstring": "00010"}
+    ],
+    [
+      {"position": 340, "bitstring": "00010"},
+      {"position": 28, "bitstring": "00010"},
+      {"position": 100, "bitstring": "00001"},
+      {"position": 18, "bitstring": "00001"}
+    ],
+    [
+      {"position": 0, "bitstring": "10010", "input": 0},
+      {"position": 20, "bitstring": "00010", "input": 1},
+      {"position": 200, "bitstring": "00001"},
+      {"position": 300, "bitstring": "00001"}
+    ],
+    [
+      {"position": 359, "bitstring": "11100"}
+    ],
+    [
+      {"position": 1, "bitstring": "01000"},
+      {"position": 2, "bitstring": "01000"},
+      {"position": 3, "bitstring": "01000"},
+      {"position": 4, "bitstring": "01000"},
+      {"position": 5, "bitstring": "00100"}
+    ]
+  ]
     },
     "solve6.json": {},
     "solve7.json": {},
