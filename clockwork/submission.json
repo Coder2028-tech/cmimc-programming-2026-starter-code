@@ -182,1996 +182,240 @@
     ]
   },
   "solve5.json": {
-    "bitwidth": 5,
-    "operations": [
-      "copy",
-      "take",
-      "ifzflip",
-      "send",
-      "ifzhalt"
+  "bitwidth": 4,
+
+  "operations": ["take", "send", "ifzflip", "ifzhalt"],
+
+  "rings": [
+
+    [
+
+      { "position": 0, "bitstring": "0001" }
+
     ],
-    "rings": [
-      [
-        {
-          "position": 10,
-          "bitstring": "00010"
-        }
-      ],
-      [
-        {
-          "position": 340,
-          "bitstring": "00010"
-        },
-        {
-          "position": 28,
-          "bitstring": "00010"
-        },
-        {
-          "position": 100,
-          "bitstring": "00001"
-        },
-        {
-          "position": 18,
-          "bitstring": "00001"
-        }
-      ],
-      [
-        {
-          "position": 0,
-          "bitstring": "10010",
-          "input": 0
-        },
-        {
-          "position": 20,
-          "bitstring": "00010",
-          "input": 1
-        },
-        {
-          "position": 200,
-          "bitstring": "00001"
-        },
-        {
-          "position": 300,
-          "bitstring": "00001"
-        }
-      ],
-      [
-        {
-          "position": 359,
-          "bitstring": "11100"
-        }
-      ],
-      [
-        {
-          "position": 1,
-          "bitstring": "01000"
-        },
-        {
-          "position": 2,
-          "bitstring": "01000"
-        },
-        {
-          "position": 3,
-          "bitstring": "01000"
-        },
-        {
-          "position": 4,
-          "bitstring": "01000"
-        },
-        {
-          "position": 5,
-          "bitstring": "00100"
-        }
-      ]
+
+    [
+
+      { "position": 180, "bitstring": "0010" }
+
+    ],
+
+    [
+
+      { "position": 0, "bitstring": "1000", "input": 0 },
+
+      { "position": 120, "bitstring": "1000", "input": 1 }
+
+    ],
+
+    [
+      { "position": 60, "bitstring": "0100" },
+      { "position": 240, "bitstring": "0100" }
+
     ]
+  ]
   },
   "solve6.json": {
-    "bitwidth": 5,
-    "operations": [
-      "send",
-      "take",
-      "ifzflip",
-      "send",
-      "ifzhalt"
+    bitwidth": 5,
+
+  "operations": ["take", "copy", "send", "ifzflip", "ifzhalt"],
+
+  "rings": [
+
+    [
+
+      { "position": 0, "bitstring": "00001" }
+
     ],
-    "rings": [
-      [
-        {
-          "position": 20,
-          "bitstring": "10001"
-        }
-      ],
-      [
-        {
-          "position": 40,
-          "bitstring": "10010"
-        },
-        {
-          "position": 180,
-          "bitstring": "01001"
-        },
-        {
-          "position": 160,
-          "bitstring": "00010"
-        }
-      ],
-      [
-        {
-          "position": 140,
-          "bitstring": "00010",
-          "input": 0
-        },
-        {
-          "position": 60,
-          "bitstring": "11100",
-          "input": 1
-        },
-        {
-          "position": 80,
-          "bitstring": "10100"
-        }
-      ],
-      [
-        {
-          "position": 260,
-          "bitstring": "00110"
-        },
-        {
-          "position": 40,
-          "bitstring": "11110"
-        },
-        {
-          "position": 0,
-          "bitstring": "01001"
-        }
-      ],
-      [
-        {
-          "position": 300,
-          "bitstring": "00011"
-        },
-        {
-          "position": 180,
-          "bitstring": "01110"
-        },
-        {
-          "position": 120,
-          "bitstring": "11010"
-        }
-      ]
+
+    [
+
+      { "position": 180, "bitstring": "00010" }
+
+    ],
+
+    [
+
+      { "position": 0, "bitstring": "10000", "input": 0 }
+
+    ],
+
+    [
+
+      { "position": 120, "bitstring": "10000", "input": 1 }
+
+    ],
+
+    [
+
+      { "position": 60, "bitstring": "01000" },
+
+      { "position": 240, "bitstring": "00100" }
+
     ]
+  ]
   },
   "solve7.json": {
-    "bitwidth": 6,
-    "operations": [
-      "gen",
-      "drop",
-      "drop",
-      "send",
-      "ifzhalt",
-      "gen"
+    "bitwidth": 5,
+
+  "operations": ["take", "gen", "send", "ifzflip", "ifzhalt"],
+
+  "rings": [
+
+    [
+
+      { "position": 0, "bitstring": "00001" }
+
     ],
-    "rings": [
-      [
-        {
-          "position": 260,
-          "bitstring": "000100"
-        }
-      ],
-      [
-        {
-          "position": 0,
-          "bitstring": "100000"
-        },
-        {
-          "position": 359,
-          "bitstring": "010000",
-          "input": 0
-        },
-        {
-          "position": 343,
-          "bitstring": "001111"
-        }
-      ],
-      [
-        {
-          "position": 1,
-          "bitstring": "111000"
-        },
-        {
-          "position": 2,
-          "bitstring": "110000"
-        },
-        {
-          "position": 3,
-          "bitstring": "110000"
-        },
-        {
-          "position": 4,
-          "bitstring": "111000"
-        },
-        {
-          "position": 5,
-          "bitstring": "110000"
-        },
-        {
-          "position": 6,
-          "bitstring": "110000"
-        },
-        {
-          "position": 7,
-          "bitstring": "110000"
-        },
-        {
-          "position": 8,
-          "bitstring": "110000"
-        },
-        {
-          "position": 9,
-          "bitstring": "111000"
-        },
-        {
-          "position": 10,
-          "bitstring": "110000"
-        },
-        {
-          "position": 11,
-          "bitstring": "110000"
-        },
-        {
-          "position": 12,
-          "bitstring": "110000"
-        },
-        {
-          "position": 13,
-          "bitstring": "110000"
-        },
-        {
-          "position": 14,
-          "bitstring": "110000"
-        },
-        {
-          "position": 15,
-          "bitstring": "110000"
-        },
-        {
-          "position": 16,
-          "bitstring": "111000"
-        },
-        {
-          "position": 17,
-          "bitstring": "110000"
-        },
-        {
-          "position": 18,
-          "bitstring": "110000"
-        },
-        {
-          "position": 19,
-          "bitstring": "110000"
-        },
-        {
-          "position": 20,
-          "bitstring": "110000"
-        },
-        {
-          "position": 21,
-          "bitstring": "110000"
-        },
-        {
-          "position": 22,
-          "bitstring": "110000"
-        },
-        {
-          "position": 23,
-          "bitstring": "110000"
-        },
-        {
-          "position": 24,
-          "bitstring": "110000"
-        },
-        {
-          "position": 25,
-          "bitstring": "111000"
-        },
-        {
-          "position": 26,
-          "bitstring": "110000"
-        },
-        {
-          "position": 27,
-          "bitstring": "110000"
-        },
-        {
-          "position": 28,
-          "bitstring": "110000"
-        },
-        {
-          "position": 29,
-          "bitstring": "110000"
-        },
-        {
-          "position": 30,
-          "bitstring": "110000"
-        },
-        {
-          "position": 31,
-          "bitstring": "110000"
-        },
-        {
-          "position": 32,
-          "bitstring": "110000"
-        },
-        {
-          "position": 33,
-          "bitstring": "110000"
-        },
-        {
-          "position": 34,
-          "bitstring": "110000"
-        },
-        {
-          "position": 35,
-          "bitstring": "110000"
-        },
-        {
-          "position": 36,
-          "bitstring": "111000"
-        },
-        {
-          "position": 37,
-          "bitstring": "110000"
-        },
-        {
-          "position": 38,
-          "bitstring": "110000"
-        },
-        {
-          "position": 39,
-          "bitstring": "110000"
-        },
-        {
-          "position": 40,
-          "bitstring": "110000"
-        },
-        {
-          "position": 41,
-          "bitstring": "110000"
-        },
-        {
-          "position": 42,
-          "bitstring": "110000"
-        },
-        {
-          "position": 43,
-          "bitstring": "110000"
-        },
-        {
-          "position": 44,
-          "bitstring": "110000"
-        },
-        {
-          "position": 45,
-          "bitstring": "110000"
-        },
-        {
-          "position": 46,
-          "bitstring": "110000"
-        },
-        {
-          "position": 47,
-          "bitstring": "110000"
-        },
-        {
-          "position": 48,
-          "bitstring": "110000"
-        },
-        {
-          "position": 49,
-          "bitstring": "111000"
-        },
-        {
-          "position": 50,
-          "bitstring": "110000"
-        },
-        {
-          "position": 51,
-          "bitstring": "110000"
-        },
-        {
-          "position": 52,
-          "bitstring": "110000"
-        },
-        {
-          "position": 53,
-          "bitstring": "110000"
-        },
-        {
-          "position": 54,
-          "bitstring": "110000"
-        },
-        {
-          "position": 55,
-          "bitstring": "110000"
-        },
-        {
-          "position": 56,
-          "bitstring": "110000"
-        },
-        {
-          "position": 57,
-          "bitstring": "110000"
-        },
-        {
-          "position": 58,
-          "bitstring": "110000"
-        },
-        {
-          "position": 59,
-          "bitstring": "110000"
-        },
-        {
-          "position": 60,
-          "bitstring": "110000"
-        },
-        {
-          "position": 61,
-          "bitstring": "110000"
-        },
-        {
-          "position": 62,
-          "bitstring": "110000"
-        },
-        {
-          "position": 63,
-          "bitstring": "110000"
-        },
-        {
-          "position": 64,
-          "bitstring": "111000"
-        },
-        {
-          "position": 65,
-          "bitstring": "110000"
-        },
-        {
-          "position": 66,
-          "bitstring": "110000"
-        },
-        {
-          "position": 67,
-          "bitstring": "110000"
-        },
-        {
-          "position": 68,
-          "bitstring": "110000"
-        },
-        {
-          "position": 69,
-          "bitstring": "110000"
-        },
-        {
-          "position": 70,
-          "bitstring": "110000"
-        },
-        {
-          "position": 71,
-          "bitstring": "110000"
-        },
-        {
-          "position": 72,
-          "bitstring": "110000"
-        },
-        {
-          "position": 73,
-          "bitstring": "110000"
-        },
-        {
-          "position": 74,
-          "bitstring": "110000"
-        },
-        {
-          "position": 75,
-          "bitstring": "110000"
-        },
-        {
-          "position": 76,
-          "bitstring": "110000"
-        },
-        {
-          "position": 77,
-          "bitstring": "110000"
-        },
-        {
-          "position": 78,
-          "bitstring": "110000"
-        },
-        {
-          "position": 79,
-          "bitstring": "110000"
-        },
-        {
-          "position": 80,
-          "bitstring": "110000"
-        },
-        {
-          "position": 81,
-          "bitstring": "111000"
-        },
-        {
-          "position": 82,
-          "bitstring": "110000"
-        },
-        {
-          "position": 83,
-          "bitstring": "110000"
-        },
-        {
-          "position": 84,
-          "bitstring": "110000"
-        },
-        {
-          "position": 85,
-          "bitstring": "110000"
-        },
-        {
-          "position": 86,
-          "bitstring": "110000"
-        },
-        {
-          "position": 87,
-          "bitstring": "110000"
-        },
-        {
-          "position": 88,
-          "bitstring": "110000"
-        },
-        {
-          "position": 89,
-          "bitstring": "110000"
-        },
-        {
-          "position": 90,
-          "bitstring": "110000"
-        },
-        {
-          "position": 91,
-          "bitstring": "110000"
-        },
-        {
-          "position": 92,
-          "bitstring": "110000"
-        },
-        {
-          "position": 93,
-          "bitstring": "110000"
-        },
-        {
-          "position": 94,
-          "bitstring": "110000"
-        },
-        {
-          "position": 95,
-          "bitstring": "110000"
-        },
-        {
-          "position": 96,
-          "bitstring": "110000"
-        },
-        {
-          "position": 97,
-          "bitstring": "110000"
-        },
-        {
-          "position": 98,
-          "bitstring": "110000"
-        },
-        {
-          "position": 99,
-          "bitstring": "110000"
-        },
-        {
-          "position": 100,
-          "bitstring": "111000"
-        },
-        {
-          "position": 101,
-          "bitstring": "110000"
-        },
-        {
-          "position": 102,
-          "bitstring": "110000"
-        },
-        {
-          "position": 103,
-          "bitstring": "110000"
-        },
-        {
-          "position": 104,
-          "bitstring": "110000"
-        },
-        {
-          "position": 105,
-          "bitstring": "110000"
-        },
-        {
-          "position": 106,
-          "bitstring": "110000"
-        },
-        {
-          "position": 107,
-          "bitstring": "110000"
-        },
-        {
-          "position": 108,
-          "bitstring": "110000"
-        },
-        {
-          "position": 109,
-          "bitstring": "110000"
-        },
-        {
-          "position": 110,
-          "bitstring": "110000"
-        },
-        {
-          "position": 111,
-          "bitstring": "110000"
-        },
-        {
-          "position": 112,
-          "bitstring": "110000"
-        },
-        {
-          "position": 113,
-          "bitstring": "110000"
-        },
-        {
-          "position": 114,
-          "bitstring": "110000"
-        },
-        {
-          "position": 115,
-          "bitstring": "110000"
-        },
-        {
-          "position": 116,
-          "bitstring": "110000"
-        },
-        {
-          "position": 117,
-          "bitstring": "110000"
-        },
-        {
-          "position": 118,
-          "bitstring": "110000"
-        },
-        {
-          "position": 119,
-          "bitstring": "110000"
-        },
-        {
-          "position": 120,
-          "bitstring": "110000"
-        },
-        {
-          "position": 121,
-          "bitstring": "111000"
-        },
-        {
-          "position": 122,
-          "bitstring": "110000"
-        },
-        {
-          "position": 123,
-          "bitstring": "110000"
-        },
-        {
-          "position": 124,
-          "bitstring": "110000"
-        },
-        {
-          "position": 125,
-          "bitstring": "110000"
-        },
-        {
-          "position": 126,
-          "bitstring": "110000"
-        },
-        {
-          "position": 127,
-          "bitstring": "110000"
-        },
-        {
-          "position": 128,
-          "bitstring": "110000"
-        },
-        {
-          "position": 129,
-          "bitstring": "110000"
-        },
-        {
-          "position": 130,
-          "bitstring": "110000"
-        },
-        {
-          "position": 131,
-          "bitstring": "110000"
-        },
-        {
-          "position": 132,
-          "bitstring": "110000"
-        },
-        {
-          "position": 133,
-          "bitstring": "110000"
-        },
-        {
-          "position": 134,
-          "bitstring": "110000"
-        },
-        {
-          "position": 135,
-          "bitstring": "110000"
-        },
-        {
-          "position": 136,
-          "bitstring": "110000"
-        },
-        {
-          "position": 137,
-          "bitstring": "110000"
-        },
-        {
-          "position": 138,
-          "bitstring": "110000"
-        },
-        {
-          "position": 139,
-          "bitstring": "110000"
-        },
-        {
-          "position": 140,
-          "bitstring": "110000"
-        },
-        {
-          "position": 141,
-          "bitstring": "110000"
-        },
-        {
-          "position": 142,
-          "bitstring": "110000"
-        },
-        {
-          "position": 143,
-          "bitstring": "110000"
-        },
-        {
-          "position": 144,
-          "bitstring": "111000"
-        },
-        {
-          "position": 145,
-          "bitstring": "110000"
-        },
-        {
-          "position": 146,
-          "bitstring": "110000"
-        },
-        {
-          "position": 147,
-          "bitstring": "110000"
-        },
-        {
-          "position": 148,
-          "bitstring": "110000"
-        },
-        {
-          "position": 149,
-          "bitstring": "110000"
-        },
-        {
-          "position": 150,
-          "bitstring": "110000"
-        },
-        {
-          "position": 151,
-          "bitstring": "110000"
-        },
-        {
-          "position": 152,
-          "bitstring": "110000"
-        },
-        {
-          "position": 153,
-          "bitstring": "110000"
-        },
-        {
-          "position": 154,
-          "bitstring": "110000"
-        },
-        {
-          "position": 155,
-          "bitstring": "110000"
-        },
-        {
-          "position": 156,
-          "bitstring": "110000"
-        },
-        {
-          "position": 157,
-          "bitstring": "110000"
-        },
-        {
-          "position": 158,
-          "bitstring": "110000"
-        },
-        {
-          "position": 159,
-          "bitstring": "110000"
-        },
-        {
-          "position": 160,
-          "bitstring": "110000"
-        },
-        {
-          "position": 161,
-          "bitstring": "110000"
-        },
-        {
-          "position": 162,
-          "bitstring": "110000"
-        },
-        {
-          "position": 163,
-          "bitstring": "110000"
-        },
-        {
-          "position": 164,
-          "bitstring": "110000"
-        },
-        {
-          "position": 165,
-          "bitstring": "110000"
-        },
-        {
-          "position": 166,
-          "bitstring": "110000"
-        },
-        {
-          "position": 167,
-          "bitstring": "110000"
-        },
-        {
-          "position": 168,
-          "bitstring": "110000"
-        },
-        {
-          "position": 169,
-          "bitstring": "111000"
-        },
-        {
-          "position": 170,
-          "bitstring": "110000"
-        },
-        {
-          "position": 171,
-          "bitstring": "110000"
-        },
-        {
-          "position": 172,
-          "bitstring": "110000"
-        },
-        {
-          "position": 173,
-          "bitstring": "110000"
-        },
-        {
-          "position": 174,
-          "bitstring": "110000"
-        },
-        {
-          "position": 175,
-          "bitstring": "110000"
-        },
-        {
-          "position": 176,
-          "bitstring": "110000"
-        },
-        {
-          "position": 177,
-          "bitstring": "110000"
-        },
-        {
-          "position": 178,
-          "bitstring": "110000"
-        },
-        {
-          "position": 179,
-          "bitstring": "110000"
-        },
-        {
-          "position": 180,
-          "bitstring": "110000"
-        },
-        {
-          "position": 181,
-          "bitstring": "110000"
-        },
-        {
-          "position": 182,
-          "bitstring": "110000"
-        },
-        {
-          "position": 183,
-          "bitstring": "110000"
-        },
-        {
-          "position": 184,
-          "bitstring": "110000"
-        },
-        {
-          "position": 185,
-          "bitstring": "110000"
-        },
-        {
-          "position": 186,
-          "bitstring": "110000"
-        },
-        {
-          "position": 187,
-          "bitstring": "110000"
-        },
-        {
-          "position": 188,
-          "bitstring": "110000"
-        },
-        {
-          "position": 189,
-          "bitstring": "110000"
-        },
-        {
-          "position": 190,
-          "bitstring": "110000"
-        },
-        {
-          "position": 191,
-          "bitstring": "110000"
-        },
-        {
-          "position": 192,
-          "bitstring": "110000"
-        },
-        {
-          "position": 193,
-          "bitstring": "110000"
-        },
-        {
-          "position": 194,
-          "bitstring": "110000"
-        },
-        {
-          "position": 195,
-          "bitstring": "110000"
-        },
-        {
-          "position": 196,
-          "bitstring": "111000"
-        },
-        {
-          "position": 197,
-          "bitstring": "110000"
-        },
-        {
-          "position": 198,
-          "bitstring": "110000"
-        },
-        {
-          "position": 199,
-          "bitstring": "110000"
-        },
-        {
-          "position": 200,
-          "bitstring": "110000"
-        },
-        {
-          "position": 201,
-          "bitstring": "110000"
-        },
-        {
-          "position": 202,
-          "bitstring": "110000"
-        },
-        {
-          "position": 203,
-          "bitstring": "110000"
-        },
-        {
-          "position": 204,
-          "bitstring": "110000"
-        },
-        {
-          "position": 205,
-          "bitstring": "110000"
-        },
-        {
-          "position": 206,
-          "bitstring": "110000"
-        },
-        {
-          "position": 207,
-          "bitstring": "110000"
-        },
-        {
-          "position": 208,
-          "bitstring": "110000"
-        },
-        {
-          "position": 209,
-          "bitstring": "110000"
-        },
-        {
-          "position": 210,
-          "bitstring": "110000"
-        },
-        {
-          "position": 211,
-          "bitstring": "110000"
-        },
-        {
-          "position": 212,
-          "bitstring": "110000"
-        },
-        {
-          "position": 213,
-          "bitstring": "110000"
-        },
-        {
-          "position": 214,
-          "bitstring": "110000"
-        },
-        {
-          "position": 215,
-          "bitstring": "110000"
-        },
-        {
-          "position": 216,
-          "bitstring": "110000"
-        },
-        {
-          "position": 217,
-          "bitstring": "110000"
-        },
-        {
-          "position": 218,
-          "bitstring": "110000"
-        },
-        {
-          "position": 219,
-          "bitstring": "110000"
-        },
-        {
-          "position": 220,
-          "bitstring": "110000"
-        },
-        {
-          "position": 221,
-          "bitstring": "110000"
-        },
-        {
-          "position": 222,
-          "bitstring": "110000"
-        },
-        {
-          "position": 223,
-          "bitstring": "110000"
-        },
-        {
-          "position": 224,
-          "bitstring": "110000"
-        },
-        {
-          "position": 225,
-          "bitstring": "111000"
-        },
-        {
-          "position": 344,
-          "bitstring": "000001"
-        },
-        {
-          "position": 345,
-          "bitstring": "000001"
-        },
-        {
-          "position": 346,
-          "bitstring": "000001"
-        },
-        {
-          "position": 347,
-          "bitstring": "000001"
-        },
-        {
-          "position": 348,
-          "bitstring": "000001"
-        },
-        {
-          "position": 349,
-          "bitstring": "000001"
-        },
-        {
-          "position": 350,
-          "bitstring": "000001"
-        },
-        {
-          "position": 351,
-          "bitstring": "000001"
-        },
-        {
-          "position": 352,
-          "bitstring": "000001"
-        },
-        {
-          "position": 353,
-          "bitstring": "000001"
-        },
-        {
-          "position": 354,
-          "bitstring": "000001"
-        },
-        {
-          "position": 355,
-          "bitstring": "000001"
-        },
-        {
-          "position": 356,
-          "bitstring": "000001"
-        },
-        {
-          "position": 357,
-          "bitstring": "000001"
-        },
-        {
-          "position": 358,
-          "bitstring": "000001"
-        },
-        {
-          "position": 280,
-          "bitstring": "000010"
-        }
-      ]
+
+    [
+
+      { "position": 180, "bitstring": "00010" }
+
+    ],
+
+    [
+
+      { "position": 0, "bitstring": "10000", "input": 0 }
+
+    ],
+
+    [
+
+      { "position": 90, "bitstring": "01000" }
+
+    ],
+
+    [
+
+      { "position": 45, "bitstring": "00100" },
+
+      { "position": 225, "bitstring": "00100" }
+
     ]
+
+  ]
   },
   "solve8.json": {
-    "bitwidth": 4,
-    "operations": [
-      "ifzhalt",
-      "take",
-      "copy",
-      "send"
+   "bitwidth": 5,
+  "operations": ["take", "copy", "send", "ifzflip", "ifzhalt"],
+
+  "rings": [
+
+    [
+
+      { "position": 0, "bitstring": "00001" }
+
     ],
-    "rings": [
-      [
-        {
-          "position": 70,
-          "bitstring": "0001"
-        }
-      ],
-      [
-        {
-          "position": 350,
-          "bitstring": "0001"
-        }
-      ],
-      [
-        {
-          "position": 50,
-          "bitstring": "0010",
-          "input": 1
-        },
-        {
-          "position": 60,
-          "bitstring": "0001"
-        }
-      ],
-      [
-        {
-          "position": 0,
-          "bitstring": "0011"
-        }
-      ],
-      [
-        {
-          "position": 10,
-          "bitstring": "1100",
-          "input": 0
-        }
-      ],
-      [
-        {
-          "position": 0,
-          "bitstring": "1100"
-        }
-      ]
+
+    [
+
+      { "position": 180, "bitstring": "00010" }
+
+    ],
+
+    [
+
+      { "position": 0, "bitstring": "10000", "input": 0 },
+
+      { "position": 120, "bitstring": "10000", "input": 1 }
+
+    ],
+
+    [
+
+      { "position": 60, "bitstring": "01000" },
+
+      { "position": 240, "bitstring": "01000" }
+
+    ],
+
+    [
+
+      { "position": 30, "bitstring": "00100" },
+
+      { "position": 210, "bitstring": "00100" }
+
     ]
+
+  ]
   },
   "solve9.json": {
-    "bitwidth": 23,
-    "operations": [
-      "drop",
-      "gen",
-      "copy",
-      "send",
-      "copy",
-      "send",
-      "copy",
-      "send",
-      "copy",
-      "send",
-      "copy",
-      "send",
-      "copy",
-      "send",
-      "copy",
-      "send",
-      "send",
-      "send",
-      "send",
-      "send",
-      "send",
-      "take",
-      "ifzhalt"
+    "bitwidth": 5,
+
+  "operations": ["take", "copy", "send", "ifzflip", "ifzhalt"],
+
+  "rings": [
+
+    [
+
+      { "position": 0, "bitstring": "00001" }
+
     ],
-    "rings": [
-      [
-        {
-          "position": 300,
-          "bitstring": "10000000000000001111100"
-        }
-      ],
-      [
-        {
-          "position": 340,
-          "bitstring": "00000000000000001000000"
-        },
-        {
-          "position": 330,
-          "bitstring": "00000000000000000100000"
-        },
-        {
-          "position": 321,
-          "bitstring": "00000000000000000010000"
-        },
-        {
-          "position": 320,
-          "bitstring": "00000000000000000001000"
-        },
-        {
-          "position": 310,
-          "bitstring": "00000000000000000000100"
-        },
-        {
-          "position": 316,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 315,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 314,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 313,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 312,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 311,
-          "bitstring": "11000000000000000000000"
-        }
-      ],
-      [
-        {
-          "position": 20,
-          "bitstring": "11000000000000001000000"
-        },
-        {
-          "position": 30,
-          "bitstring": "11000000000000000100000"
-        },
-        {
-          "position": 40,
-          "bitstring": "11000000000000000010000"
-        },
-        {
-          "position": 50,
-          "bitstring": "11000000000000000001000"
-        },
-        {
-          "position": 317,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 316,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 315,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 314,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 313,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 312,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 260,
-          "bitstring": "00000000000000010000100"
-        }
-      ],
-      [
-        {
-          "position": 19,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 29,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 39,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 38,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 49,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 47,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 347,
-          "bitstring": "00000000000000010000000"
-        }
-      ],
-      [
-        {
-          "position": 230,
-          "bitstring": "00000000000001100000000"
-        },
-        {
-          "position": 240,
-          "bitstring": "00000000000000010000000"
-        }
-      ],
-      [
-        {
-          "position": 358,
-          "bitstring": "00000000000001000000000"
-        },
-        {
-          "position": 355,
-          "bitstring": "00000000000000110000000"
-        },
-        {
-          "position": 354,
-          "bitstring": "00000000000000110000000"
-        },
-        {
-          "position": 353,
-          "bitstring": "00000000000000110000000"
-        },
-        {
-          "position": 352,
-          "bitstring": "00000000000000110000000"
-        },
-        {
-          "position": 351,
-          "bitstring": "00000000000000110000000"
-        },
-        {
-          "position": 350,
-          "bitstring": "00000000000000110000000"
-        },
-        {
-          "position": 349,
-          "bitstring": "00000000000000110000000"
-        },
-        {
-          "position": 348,
-          "bitstring": "00000000000000110000000"
-        }
-      ],
-      [
-        {
-          "position": 200,
-          "bitstring": "00000000000110000000000"
-        },
-        {
-          "position": 210,
-          "bitstring": "00000000000001000000000"
-        },
-        {
-          "position": 310,
-          "bitstring": "00000000000000000000001"
-        }
-      ],
-      [
-        {
-          "position": 8,
-          "bitstring": "00000000000100000000000"
-        },
-        {
-          "position": 5,
-          "bitstring": "00000000000011000000000"
-        },
-        {
-          "position": 4,
-          "bitstring": "00000000000011000000000"
-        },
-        {
-          "position": 3,
-          "bitstring": "00000000000011000000000"
-        },
-        {
-          "position": 2,
-          "bitstring": "00000000000011000000000"
-        },
-        {
-          "position": 1,
-          "bitstring": "00000000000011000000000"
-        },
-        {
-          "position": 0,
-          "bitstring": "00000000000011000000000"
-        },
-        {
-          "position": 359,
-          "bitstring": "00000000000011000000000"
-        },
-        {
-          "position": 319,
-          "bitstring": "00000000000000000000001"
-        }
-      ],
-      [
-        {
-          "position": 170,
-          "bitstring": "00000000011000000000000"
-        },
-        {
-          "position": 180,
-          "bitstring": "00000000000100000000000"
-        }
-      ],
-      [
-        {
-          "position": 17,
-          "bitstring": "00000000010000000000000"
-        },
-        {
-          "position": 14,
-          "bitstring": "00000000001100000000000"
-        },
-        {
-          "position": 13,
-          "bitstring": "00000000001100000000000"
-        },
-        {
-          "position": 12,
-          "bitstring": "00000000001100000000000"
-        },
-        {
-          "position": 11,
-          "bitstring": "00000000001100000000000"
-        },
-        {
-          "position": 10,
-          "bitstring": "00000000001100000000000"
-        },
-        {
-          "position": 9,
-          "bitstring": "00000000001100000000000"
-        }
-      ],
-      [
-        {
-          "position": 140,
-          "bitstring": "00000001100000000000000"
-        },
-        {
-          "position": 150,
-          "bitstring": "00000000010000000000000"
-        }
-      ],
-      [
-        {
-          "position": 25,
-          "bitstring": "00000001000000000000000"
-        },
-        {
-          "position": 22,
-          "bitstring": "00000000110000000000000"
-        },
-        {
-          "position": 21,
-          "bitstring": "00000000110000000000000"
-        },
-        {
-          "position": 20,
-          "bitstring": "00000000110000000000000"
-        },
-        {
-          "position": 19,
-          "bitstring": "00000000110000000000000"
-        },
-        {
-          "position": 18,
-          "bitstring": "00000000110000000000000"
-        }
-      ],
-      [
-        {
-          "position": 110,
-          "bitstring": "00000110000000000000000"
-        },
-        {
-          "position": 120,
-          "bitstring": "00000001000000000000000"
-        }
-      ],
-      [
-        {
-          "position": 32,
-          "bitstring": "00000100000000000000000"
-        },
-        {
-          "position": 29,
-          "bitstring": "00000011000000000000000"
-        },
-        {
-          "position": 28,
-          "bitstring": "00000011000000000000000"
-        },
-        {
-          "position": 27,
-          "bitstring": "00000011000000000000000"
-        },
-        {
-          "position": 26,
-          "bitstring": "00000011000000000000000"
-        }
-      ],
-      [
-        {
-          "position": 80,
-          "bitstring": "00011000000000000000000"
-        },
-        {
-          "position": 90,
-          "bitstring": "00000100000000000000000"
-        }
-      ],
-      [
-        {
-          "position": 38,
-          "bitstring": "00010000000000000000000"
-        },
-        {
-          "position": 35,
-          "bitstring": "00001100000000000000000"
-        },
-        {
-          "position": 34,
-          "bitstring": "00001100000000000000000"
-        },
-        {
-          "position": 33,
-          "bitstring": "00001100000000000000000"
-        }
-      ],
-      [
-        {
-          "position": 50,
-          "bitstring": "11100000000000000000000"
-        },
-        {
-          "position": 60,
-          "bitstring": "00010000000000000000000"
-        }
-      ],
-      [
-        {
-          "position": 49,
-          "bitstring": "11000000000000000000000"
-        },
-        {
-          "position": 40,
-          "bitstring": "00110000000000000000000"
-        },
-        {
-          "position": 39,
-          "bitstring": "00110000000000000000000"
-        }
-      ],
-      [
-        {
-          "position": 100,
-          "bitstring": "00000000000000000000011",
-          "input": 0
-        }
-      ],
-      [
-        {
-          "position": 139,
-          "bitstring": "00000000000000000000011"
-        },
-        {
-          "position": 129,
-          "bitstring": "00000000000000000000011"
-        },
-        {
-          "position": 119,
-          "bitstring": "00000000000000000000011"
-        }
-      ]
+
+    [
+
+      { "position": 180, "bitstring": "00010" }
+
+    ],
+
+    [
+
+      { "position": 0, "bitstring": "10000", "input": 0 }
+
+    ],
+
+    [
+
+      { "position": 60, "bitstring": "01000" },
+
+      { "position": 240, "bitstring": "01000" }
+
+    ],
+
+    [
+
+      { "position": 30, "bitstring": "00100" },
+
+      { "position": 210, "bitstring": "00100" }
+
     ]
+  ]
   },
   "solve10.json": {
-    "bitwidth": 8,
-    "operations": [
-      "drop",
-      "gen",
-      "send",
-      "send",
-      "send",
-      "send",
-      "take",
-      "ifzhalt"
+    "bitwidth": 4,
+
+  "operations": ["take", "ifzflip", "send", "ifzhalt"],
+
+  "rings": [
+
+    [
+
+      { "position": 0, "bitstring": "0001" }
+
     ],
-    "rings": [
-      [
-        {
-          "position": 300,
-          "bitstring": "00111100"
-        }
-      ],
-      [
-        {
-          "position": 250,
-          "bitstring": "00100000"
-        },
-        {
-          "position": 189,
-          "bitstring": "00010000"
-        },
-        {
-          "position": 165,
-          "bitstring": "00001000"
-        },
-        {
-          "position": 164,
-          "bitstring": "00000100"
-        }
-      ],
-      [
-        {
-          "position": 260,
-          "bitstring": "11100000"
-        },
-        {
-          "position": 240,
-          "bitstring": "11010000"
-        },
-        {
-          "position": 220,
-          "bitstring": "11001000"
-        },
-        {
-          "position": 200,
-          "bitstring": "11000100"
-        }
-      ],
-      [
-        {
-          "position": 259,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 239,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 238,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 237,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 219,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 218,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 217,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 216,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 215,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 214,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 213,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 212,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 199,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 198,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 197,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 196,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 195,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 194,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 193,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 192,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 191,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 190,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 189,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 188,
-          "bitstring": "11000000"
-        },
-        {
-          "position": 187,
-          "bitstring": "11000000"
-        }
-      ],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "position": 140,
-          "bitstring": "00000001"
-        }
-      ],
-      [
-        {
-          "position": 4,
-          "bitstring": "00000001"
-        }
-      ],
-      [],
-      [],
-      [
-        {
-          "position": 100,
-          "bitstring": "00000011",
-          "input": 0
-        },
-        {
-          "position": 130,
-          "bitstring": "00000000",
-          "input": 1
-        }
-      ],
-      [
-        {
-          "position": 0,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 359,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 358,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 357,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 356,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 355,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 354,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 353,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 352,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 351,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 350,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 349,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 348,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 347,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 346,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 345,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 344,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 343,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 342,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 341,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 340,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 339,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 338,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 337,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 336,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 335,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 334,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 333,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 332,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 331,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 330,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 329,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 328,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 327,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 326,
-          "bitstring": "00000011"
-        },
-        {
-          "position": 325,
-          "bitstring": "00000011"
-        }
-      ]
+
+    [
+
+      { "position": 180, "bitstring": "0010" }
+
+    ],
+
+    [
+
+      { "position": 0, "bitstring": "1000", "input": 0 },
+
+      { "position": 120, "bitstring": "1000", "input": 1 }
+
+    ],
+
+    [
+
+      { "position": 60, "bitstring": "0100" },
+
+      { "position": 240, "bitstring": "0100" }
+
     ]
-  }
+
+  ]
 }
