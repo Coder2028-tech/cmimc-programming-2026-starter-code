@@ -352,7 +352,13 @@ def SubmissionGhost(
             frontier_nodes.append((node, unseen_count))
 
     frontier_exists = bool(frontier_nodes)
-    explore_phase = step < int(total_steps * 0.5)
+    seen_avg_degree = (sum(len(graph[node]) for node in graph) / len(graph)) if graph else 0.0
+    if seen_avg_degree >= 7:
+        explore_phase = step < int(total_steps * 0.3)
+    elif seen_avg_degree >= 5:
+        explore_phase = step < int(total_steps * 0.4)
+    else:
+        explore_phase = step < int(total_steps * 0.5)
 
     if has_slot:
         avg_gain = (
@@ -388,7 +394,7 @@ def SubmissionGhost(
         if step > total_steps - 220 and (avg_gain >= 2 or best_gain >= 6 or info["drained"] >= 12):
             fill_target = 50
 
-        spin_cap = 7 if frontier_exists and explore_phase else 12
+        spin_cap = 13 if frontier_exists and explore_phase else 12
         if slot_coins < fill_target and spin_streak < spin_cap:
             return finish(-1)
 
