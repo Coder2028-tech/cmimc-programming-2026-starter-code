@@ -63,7 +63,7 @@
   },
 
   "solve5.json": {
-    bitwidth": 5,
+    "bitwidth": 5,
 
   "operations": ["take", "ifzflip", "copy", "send", "ifzhalt"],
 
