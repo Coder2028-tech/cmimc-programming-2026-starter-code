@@ -7,32 +7,31 @@ def SubmissionBot(
 ) -> Tuple[int, Any]:
     no_target = 127
     visit_bits = 100
-    max_stack_len = 32
+    recent_len = 8
     visit_mask = (1 << visit_bits) - 1
     camp_shift = visit_bits
     banned_shift = camp_shift + 7
     spins_shift = banned_shift + 7
     gain_shift = spins_shift + 8
     explore_shift = gain_shift + 14
-    degree_shift = explore_shift + 9
-    camp_depth_shift = degree_shift + 10
-    stack_len_shift = camp_depth_shift + 6
-    stack_shift = stack_len_shift + 6
-    stack_mask = (1 << (7 * max_stack_len)) - 1
+    recent_shift = explore_shift + 9
+    degree_shift = recent_shift + 7 * recent_len
+    run_shift = degree_shift + 10
+    recent_mask = (1 << (7 * recent_len)) - 1
 
-    def unpack_stack(bits, stack_len):
+    def unpack_recent(bits):
         out = []
-        for i in range(stack_len):
+        for i in range(recent_len):
             out.append((bits >> (7 * i)) & 0x7F)
         return out
 
-    def pack_stack(nodes):
+    def pack_recent(nodes):
         bits = 0
-        for i, node in enumerate(nodes[:max_stack_len]):
+        for i, node in enumerate(nodes[:recent_len]):
             bits |= (node & 0x7F) << (7 * i)
         return bits
 
-    def pack(visited, camp, banned, spins, total_gain, explored, degree_sum, camp_depth, stack):
+    def pack(visited, camp, banned, spins, total_gain, explored, recent_bits, degree_sum, fresh_run):
         return (
             (visited & visit_mask)
             | ((camp & 0x7F) << camp_shift)
@@ -40,10 +39,9 @@ def SubmissionBot(
             | ((min(spins, 255) & 0xFF) << spins_shift)
             | ((min(total_gain, (1 << 14) - 1) & ((1 << 14) - 1)) << gain_shift)
             | ((min(explored, (1 << 9) - 1) & ((1 << 9) - 1)) << explore_shift)
+            | ((recent_bits & recent_mask) << recent_shift)
             | ((min(degree_sum, 1023) & 0x3FF) << degree_shift)
-            | ((min(camp_depth, 63) & 0x3F) << camp_depth_shift)
-            | ((min(len(stack), max_stack_len) & 0x3F) << stack_len_shift)
-            | ((pack_stack(stack) & stack_mask) << stack_shift)
+            | ((min(fresh_run, 63) & 0x3F) << run_shift)
         )
 
     if data is None:
@@ -54,8 +52,8 @@ def SubmissionBot(
         total_gain = 0
         explored = 0
         degree_sum = 0
-        camp_depth = 0
-        stack = [pos]
+        recent = [no_target] * recent_len
+        fresh_run = 0
     else:
         state = int(data)
         visited = state & visit_mask
@@ -64,34 +62,28 @@ def SubmissionBot(
         spins = (state >> spins_shift) & 0xFF
         total_gain = (state >> gain_shift) & ((1 << 14) - 1)
         explored = (state >> explore_shift) & ((1 << 9) - 1)
+        recent = unpack_recent((state >> recent_shift) & recent_mask)
         degree_sum = (state >> degree_shift) & 0x3FF
-        camp_depth = (state >> camp_depth_shift) & 0x3F
-        stack_len = (state >> stack_len_shift) & 0x3F
-        stack = unpack_stack((state >> stack_shift) & stack_mask, stack_len)
-
-    if not stack:
-        stack = [pos]
-    elif stack[-1] != pos:
-        if pos in stack:
-            stack = stack[: stack.index(pos) + 1]
-        elif len(stack) >= 2 and stack[-2] == pos:
-            stack = stack[:-1]
-        else:
-            stack = [pos]
+        fresh_run = (state >> run_shift) & 0x3F
 
     first_visit = ((visited >> pos) & 1) == 0
     visited |= 1 << pos
     explored = min(explored + 1, (1 << 9) - 1)
     remaining = total_steps - step
     avg_x8 = (total_gain * 8) // max(spins, 1) if spins else 0
+    recent = [pos] + [node for node in recent if node != pos][: recent_len - 1]
+    recent_set = set(recent)
     if first_visit:
         degree_sum = min(degree_sum + len(neighbors), 1023)
+        if step > 1:
+            fresh_run = min(fresh_run + 1, 63)
+    else:
+        fresh_run = max(fresh_run - 1, 0)
     visited_count = visited.bit_count()
     avg_degree_x10 = (degree_sum * 10) // max(visited_count, 1)
-    current_depth = max(0, len(stack) - 1)
-    stack_seed = 0
-    for i, node in enumerate(stack[-8:]):
-        stack_seed += (i + 5) * (node + 1)
+    recent_seed = 0
+    for i, node in enumerate(recent):
+        recent_seed += (i + 3) * (0 if node == no_target else node + 1)
 
     def pick(options, salt):
         ordered = sorted(options)
@@ -99,80 +91,101 @@ def SubmissionBot(
             step * 17
             + pos * 31
             + visited_count * 13
-            + stack_seed * 7
+            + recent_seed * 7
             + explored * 5
-            + current_depth * 11
             + salt
         )
         return ordered[seed % len(ordered)]
+
+    def recency_age(node):
+        for idx, seen_node in enumerate(recent):
+            if seen_node == node:
+                return idx
+        return recent_len + 1
+
+    def pick_oldest(options, salt):
+        best_age = max(recency_age(node) for node in options)
+        oldest = [node for node in options if recency_age(node) == best_age]
+        return pick(oldest, salt)
 
     if has_slot and camp != no_target and pos == camp:
         total_gain = min(total_gain + max(slot_coins, 0), (1 << 14) - 1)
         spins = min(spins + 1, 255)
         avg_x8 = (total_gain * 8) // max(spins, 1)
 
-    if avg_degree_x10 >= 55:
-        min_camp_depth = 2
-        force_step = 110
-        review_1 = 48
-        poor_1 = 88
-        review_2 = 96
-        poor_2 = 112
-    elif avg_degree_x10 >= 38:
-        min_camp_depth = 5
-        force_step = 180
-        review_1 = 72
-        poor_1 = 136
-        review_2 = 144
-        poor_2 = 168
-    else:
-        min_camp_depth = 8
-        force_step = 240
-        review_1 = 84
-        poor_1 = 160
-        review_2 = 168
-        poor_2 = 200
-
-    if camp != no_target and pos == camp and spins >= review_1:
-        bail_now = False
-        if spins >= review_2 and avg_x8 < poor_2:
-            bail_now = True
-        elif avg_x8 < poor_1 and (camp_depth <= min_camp_depth or avg_degree_x10 >= 55):
-            bail_now = True
-        elif avg_x8 < poor_1 and slot_coins < max(8, poor_1 // 16):
-            bail_now = True
-        if bail_now:
+    if camp != no_target and pos == camp and spins >= 10:
+        bail_bar = 30 if remaining > 500 else 24 if remaining > 220 else 16
+        if avg_degree_x10 >= 55:
+            if spins >= 48 and avg_x8 < 88 and slot_coins < 18:
+                bail_bar = max(bail_bar, 200)
+            elif spins >= 96 and avg_x8 < 112 and slot_coins < 24:
+                bail_bar = max(bail_bar, 200)
+        if avg_x8 < bail_bar and slot_coins < 8:
             banned = camp
             camp = no_target
             spins = 0
             total_gain = 0
             avg_x8 = 0
-            camp_depth = 0
 
     if banned != no_target and pos != banned:
         banned = no_target
 
-    ready_to_camp = (
-        current_depth >= min_camp_depth
-        or step >= force_step
-        or slot_coins >= 24
-        or remaining < 220
+    if avg_degree_x10 >= 55:
+        early_adopt = 22
+        mid_adopt = 16
+        explore_node_cap = 36
+        explore_step_cap = 180
+        run_target = 2
+    elif avg_degree_x10 >= 38:
+        early_adopt = 18
+        mid_adopt = 12
+        explore_node_cap = 32
+        explore_step_cap = 180
+        run_target = 4
+    elif avg_degree_x10 >= 28:
+        early_adopt = 24
+        mid_adopt = 18
+        explore_node_cap = 42
+        explore_step_cap = 230
+        run_target = 7
+    else:
+        early_adopt = 22
+        mid_adopt = 14
+        explore_node_cap = 34
+        explore_step_cap = 180
+        run_target = 5
+
+    if step < 120:
+        adopt_threshold = early_adopt
+    elif step < 400:
+        adopt_threshold = mid_adopt
+    elif remaining > 200:
+        adopt_threshold = 8
+    else:
+        adopt_threshold = 4
+
+    if slot_coins >= 32:
+        adopt_threshold = 0
+
+    still_exploring = (
+        visited_count < explore_node_cap
+        and step < explore_step_cap
+        and (slot_coins < adopt_threshold or fresh_run < run_target)
     )
 
-    if has_slot and camp == no_target and pos != banned and ready_to_camp:
+    if has_slot and camp == no_target and pos != banned and (not still_exploring):
         camp = pos
         spins = 0
         total_gain = 0
         avg_x8 = 0
-        camp_depth = current_depth
 
     if has_slot and pos != banned and camp != no_target and pos != camp:
         switch_now = False
         if slot_coins >= 36:
             switch_now = True
-        elif current_depth >= camp_depth + 2 and step < total_steps - 160:
+        elif slot_coins >= 24 and avg_x8 < 40:
             switch_now = True
-        elif current_depth > camp_depth and slot_coins >= 16:
+        elif remaining < 250 and slot_coins >= 16 and avg_x8 < 56:
             switch_now = True
         elif avg_degree_x10 >= 55 and slot_coins >= 18 and avg_x8 < 80:
             switch_now = True
@@ -181,96 +194,7 @@ def SubmissionBot(
             spins = 0
             total_gain = 0
             avg_x8 = 0
-            camp_depth = current_depth
 
-    def next_stack_for(target):
-        if target == -1:
-            return stack
-        if len(stack) >= 2 and target == stack[-2]:
-            return stack[:-1]
-        if target in stack:
-            return stack[: stack.index(target) + 1]
-        if not ((visited >> target) & 1):
-            if len(stack) < max_stack_len:
-                return stack + [target]
-            return stack[1:] + [target]
-        if target == pos:
-            return stack
-        return [pos, target]
-
-    if has_slot and pos == camp:
-        packed = pack(
-            visited, camp, banned, spins, total_gain, explored, degree_sum, camp_depth, stack
-        )
-        return (-1, packed)
-
-    if has_slot and pos == banned:
-        forward = [n for n in neighbors if n != last_pos] or neighbors
-        target = pick(forward, 5)
-        packed = pack(
-            visited,
-            camp,
-            banned,
-            spins,
-            total_gain,
-            explored,
-            degree_sum,
-            camp_depth,
-            next_stack_for(target),
-        )
-        return (target, packed)
-
-    if camp != no_target and camp in neighbors:
-        packed = pack(
-            visited,
-            camp,
-            banned,
-            spins,
-            total_gain,
-            explored,
-            degree_sum,
-            camp_depth,
-            next_stack_for(camp),
-        )
-        return (camp, packed)
-
-    unseen = [n for n in neighbors if not ((visited >> n) & 1)]
-    if unseen:
-        if len(stack) >= 2:
-            unseen_forward = [n for n in unseen if n != stack[-2]]
-            if unseen_forward:
-                unseen = unseen_forward
-        target = pick(unseen, 1)
-        packed = pack(
-            visited,
-            camp,
-            banned,
-            spins,
-            total_gain,
-            explored,
-            degree_sum,
-            camp_depth,
-            next_stack_for(target),
-        )
-        return (target, packed)
-
-    if len(stack) >= 2 and stack[-2] in neighbors:
-        target = stack[-2]
-        packed = pack(
-            visited,
-            camp,
-            banned,
-            spins,
-            total_gain,
-            explored,
-            degree_sum,
-            camp_depth,
-            next_stack_for(target),
-        )
-        return (target, packed)
-
-    forward = [n for n in neighbors if n != last_pos] or neighbors
-    target = pick(forward, 3)
     packed = pack(
         visited,
         camp,
@@ -278,11 +202,46 @@ def SubmissionBot(
         spins,
         total_gain,
         explored,
+        pack_recent(recent),
         degree_sum,
-        camp_depth,
-        next_stack_for(target),
+        fresh_run,
     )
-    return (target, packed)
+
+    if has_slot and pos == camp:
+        return (-1, packed)
+
+    if has_slot and pos == banned:
+        forward = [n for n in neighbors if n != last_pos and n not in recent_set] or [
+            n for n in neighbors if n != last_pos
+        ] or neighbors
+        return (pick(forward, 5), packed)
+
+    if camp != no_target and camp in neighbors:
+        return (camp, packed)
+
+    unseen_forward = [
+        n
+        for n in neighbors
+        if not ((visited >> n) & 1) and n != last_pos and n not in recent_set
+    ]
+    if unseen_forward:
+        return (pick(unseen_forward, 1), packed)
+
+    unseen = [n for n in neighbors if not ((visited >> n) & 1) and n not in recent_set]
+    if unseen:
+        return (pick(unseen, 2), packed)
+
+    forward = [n for n in neighbors if n != last_pos and n not in recent_set]
+    if not forward:
+        forward = [n for n in neighbors if n not in recent_set]
+    if forward:
+        return (pick(forward, 3), packed)
+
+    revisit = [n for n in neighbors if n != last_pos]
+    if revisit:
+        return (pick_oldest(revisit, 4), packed)
+
+    return (pick_oldest(neighbors, 5), packed)
 
 
 def SubmissionGhost(
